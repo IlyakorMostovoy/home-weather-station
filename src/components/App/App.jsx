@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import AppBar from "./components/AppBar/AppBar";
-import DataBlock from "./components/DataBlock/DataBlock";
+
+import AppBar from "../AppBar/AppBar";
+import DataBlock from "../DataBlock/DataBlock";
+
 import "./App.pcss";
 
 class App extends Component {
@@ -8,20 +10,20 @@ class App extends Component {
     super(props);
 
     this.state = {
-      temperature: 0,
-      humidity: 0,
-      pressure: 0
+      temperature: null,
+      humidity: null,
+      pressure: null
     };
 
     this.setWeatherData = this.setWeatherData.bind(this);
   }
 
-  componentDidMount() {
-    this.getWeatherData();
-
-    setInterval(() => {
-      this.getWeatherData();
-    }, 60000);
+  setWeatherData(temperatureValue, humidityValue, pressureValue) {
+    this.setState({
+      temperature: temperatureValue,
+      humidity: humidityValue,
+      pressure: pressureValue
+    });
   }
 
   getWeatherData() {
@@ -38,12 +40,12 @@ class App extends Component {
       });
   }
 
-  setWeatherData(temperatureValue, humidityValue, pressureValue) {
-    this.setState({
-      temperature: temperatureValue,
-      humidity: humidityValue,
-      pressure: pressureValue
-    });
+  componentDidMount() {
+    this.getWeatherData();
+
+    setInterval(() => {
+      this.getWeatherData();
+    }, 60000);
   }
 
   render() {
