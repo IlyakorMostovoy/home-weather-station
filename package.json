@@ -2,7 +2,7 @@
   "name": "home-weather-station",
   "version": "0.1.0",
   "author": "Ilya Malikov",
-  "homepage": "https://ilyakormostovoy.github.io/home-weather-station/",
+  "homepage": "https://iammalikov.github.io/home-weather-station/",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
