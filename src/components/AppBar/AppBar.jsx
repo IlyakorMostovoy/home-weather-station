@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./AppBar.pcss";
+import "./AppBar.scss";
 
 const AppBar = () => (
   <header className="app-bar">

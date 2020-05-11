@@ -1,67 +1,64 @@
-import React, { Component } from "react";
+import React, { useReducer, useEffect } from "react";
 
 import AppBar from "../AppBar/AppBar";
 import DataBlock from "../DataBlock/DataBlock";
 
-import "./App.pcss";
+import "./App.scss";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+const initialState = {
+  temperature: null,
+  humidity: null,
+  pressure: null,
+};
 
-    this.state = {
-      temperature: null,
-      humidity: null,
-      pressure: null
-    };
-
-    this.setWeatherData = this.setWeatherData.bind(this);
+function reducer(state, action) {
+  switch (action.type) {
+    case "update":
+      return { ...action.payload };
+    default:
+      throw new Error();
   }
+}
 
-  setWeatherData(temperatureValue, humidityValue, pressureValue) {
-    this.setState({
-      temperature: temperatureValue,
-      humidity: humidityValue,
-      pressure: pressureValue
-    });
-  }
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { temperature, humidity, pressure } = state;
 
-  getWeatherData() {
+  const getWeatherData = () => {
     fetch(
       "https://api.thingspeak.com/channels/469723/feeds.json?api_key=VLWOOUVP1DT2CMAT&results=1"
     )
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         const temperatureValue = Math.round(data.feeds[0].field1);
         const humidityValue = Math.round(data.feeds[0].field2);
         const pressureValue = Math.round(data.feeds[0].field3);
 
-        this.setWeatherData(temperatureValue, humidityValue, pressureValue);
+        dispatch({
+          type: "update",
+          payload: {
+            temperature: temperatureValue,
+            humidity: humidityValue,
+            pressure: pressureValue,
+          },
+        });
       });
-  }
+  };
 
-  componentDidMount() {
-    this.getWeatherData();
+  useEffect(() => {
+    getWeatherData();
+  }, []);
 
-    setInterval(() => {
-      this.getWeatherData();
-    }, 60000);
-  }
-
-  render() {
-    const { temperature, humidity, pressure } = this.state;
-
-    return (
-      <div className="app">
-        <AppBar />
-        <div className="app__blocks">
-          <DataBlock type="temperature" value={temperature} />
-          <DataBlock type="humidity" value={humidity} />
-          <DataBlock type="pressure" value={pressure} />
-        </div>
+  return (
+    <div className="app">
+      <AppBar />
+      <div className="app__blocks">
+        <DataBlock type="temperature" value={temperature} />
+        <DataBlock type="humidity" value={humidity} />
+        <DataBlock type="pressure" value={pressure} />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;

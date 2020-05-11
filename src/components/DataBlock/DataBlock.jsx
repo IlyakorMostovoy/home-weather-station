@@ -2,7 +2,7 @@ import React from "react";
 
 import Preloader from "../Preloader/Preloader";
 
-import "./DataBlock.pcss";
+import "./DataBlock.scss";
 
 const DataBlock = ({ type, value }) => {
   switch (type) {
