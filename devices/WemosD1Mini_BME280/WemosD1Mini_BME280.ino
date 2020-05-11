@@ -2,43 +2,38 @@
 #include <Wire.h>
 
 #include <ESP8266WiFi.h>
-#include <WiFiClient.h>
-
 #include <ESP8266HTTPClient.h>
+#include <WiFiClient.h>
 
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 
-HTTPClient http;
-WiFiClient client;
-Adafruit_BME280 bme; // I2C
+#include "Settings.h"
 
-const char* ssid = "DIR-615T-1666";
-const char* password = "13234003";
-const String host = "http://api.thingspeak.com/update";
-const String apiKey = "1DPM55BZC50VTL3M";
-const unsigned int frequencySendingData = 300000; // 5 minutes
+WiFiClient client;
+HTTPClient http;
+Adafruit_BME280 bme; // I2C
 
 void setup() {
   Serial.begin(9600);
 
-  while (!Serial); // time to get serial running
+  while (!Serial);
 
   // Connecting to WiFi network
   WiFi.mode(WIFI_STA); // Set ESP8266 to be a WiFi-client
-  WiFi.begin(ssid, password);
+  WiFi.begin(SSID, PASSWORD);
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
+    
     Serial.print(".");
   }
 
   Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.print("IP address: ");
+  Serial.print("WiFi connected, IP address: ");
   Serial.println(WiFi.localIP());
 
-  // Initialization and availability check BME280
+  // Connecting and availability check BME280 sensor
   const boolean sensorStatus = bme.begin();
 
   if (!sensorStatus) {
@@ -49,6 +44,7 @@ void setup() {
 
   Serial.println("");
   Serial.println("BME280 connected");
+  Serial.println("");
 }
 
 
@@ -57,38 +53,38 @@ void loop() {
   float humidity = bme.readHumidity(); // %
   float pressure = bme.readPressure() / 100.0F; // hPa
 
-  sendData(temperature, humidity, pressure);
+  sendDataToThingSpeak(temperature, humidity, pressure);
 
-  delay(frequencySendingData);
+  delay(FREQUENCY_SENDING_DATA);
 }
 
-void sendData(float temperature, float humidity, float pressure) {
-  String apiKeyParameter = "?api_key=" + apiKey;
+void sendDataToThingSpeak(float temperature, float humidity, float pressure) {
+  String apiHost = "http://api.thingspeak.com/update";
+  String apiKeyParameter = "?api_key=" + API_KEY;
   String temperatureParameter = "&field1=" + String(temperature);
   String humidityParameter = "&field2=" + String(humidity);
   String pressureParameter = "&field3=" + String(pressure);
+  String url = apiHost + apiKeyParameter + temperatureParameter + humidityParameter + pressureParameter;
 
-  String url = host + apiKeyParameter + temperatureParameter + humidityParameter + pressureParameter;
-
+  Serial.println("");
   Serial.print("Requesting URL: ");
   Serial.println(url);
+  Serial.println("Starting HTTP connection");
 
-  http.begin(client, url);
+  http.begin(client, url); // Configure HTTP Request
 
   int httpCode = http.GET();
-
-  Serial.print("HTTP CODE = ");
-  Serial.println(httpCode);
-  Serial.println();
 
   if (httpCode) {
     if (httpCode == 200) {
       String payload = http.getString();
-      Serial.println("Response: ");
+
+      Serial.print("Successful sending. Channel Entries: ");
       Serial.println(payload);
     }
   }
 
-  Serial.println("closing connection");
   http.end();
+
+  Serial.println("Closing HTTP connection");
 }

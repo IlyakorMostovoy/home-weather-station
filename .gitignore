@@ -9,6 +9,9 @@
 # production
 /build
 
+# devices
+Settings.cpp
+
 # misc
 .DS_Store
 .env.local
