@@ -1,7 +1,11 @@
+#include <Arduino.h>
 #include <Wire.h>
+
 #include <ESP8266WiFi.h>
-#include <ESP8266HTTPClient.h>
 #include <WiFiClient.h>
+
+#include <ESP8266HTTPClient.h>
+
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 
@@ -11,9 +15,9 @@ Adafruit_BME280 bme; // I2C
 
 const char* ssid = "DIR-615T-1666";
 const char* password = "13234003";
-const String host = "https://api.thingspeak.com/update?api_key=";
+const String host = "http://api.thingspeak.com/update";
 const String apiKey = "1DPM55BZC50VTL3M";
-const unsigned int frequencySendingData = 15000;
+const unsigned int frequencySendingData = 300000; // 5 minutes
 
 void setup() {
   Serial.begin(9600);
@@ -59,18 +63,17 @@ void loop() {
 }
 
 void sendData(float temperature, float humidity, float pressure) {
+  String apiKeyParameter = "?api_key=" + apiKey;
   String temperatureParameter = "&field1=" + String(temperature);
   String humidityParameter = "&field2=" + String(humidity);
   String pressureParameter = "&field3=" + String(pressure);
 
-  String url = host + apiKey + temperatureParameter + humidityParameter + pressureParameter;
+  String url = host + apiKeyParameter + temperatureParameter + humidityParameter + pressureParameter;
 
-  Serial.print("connecting to ");
-  Serial.println(host + apiKey);
   Serial.print("Requesting URL: ");
   Serial.println(url);
 
-  http.begin(url);
+  http.begin(client, url);
 
   int httpCode = http.GET();
 
@@ -85,7 +88,7 @@ void sendData(float temperature, float humidity, float pressure) {
       Serial.println(payload);
     }
   }
-  
+
   Serial.println("closing connection");
   http.end();
 }
