@@ -1,9 +1,9 @@
 import React, { useReducer, useEffect } from "react";
 
-import AppBar from "../AppBar/AppBar";
-import DataBlock from "../DataBlock/DataBlock";
+import AppBar from "../app-bar";
+import DataBlock from "../data-block";
 
-import "./App.scss";
+import "./styles.scss";
 
 const initialState = {
   temperature: null,
@@ -13,7 +13,7 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case "update":
+    case "LOAD_DATA":
       return { ...action.payload };
     default:
       throw new Error();
@@ -35,7 +35,7 @@ const App = () => {
         const pressureValue = Math.round(data.feeds[0].field3);
 
         dispatch({
-          type: "update",
+          type: "LOAD_DATA",
           payload: {
             temperature: temperatureValue,
             humidity: humidityValue,
@@ -51,7 +51,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <AppBar />
+      <AppBar handleRefresh={getWeatherData} />
       <div className="app__blocks">
         <DataBlock type="temperature" value={temperature} />
         <DataBlock type="humidity" value={humidity} />

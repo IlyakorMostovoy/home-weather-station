@@ -1,9 +1,17 @@
 .app-bar {
-  background-color: #00bcd4;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #00bcd4;
+
+  @media (min-width: 1024px) {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 
   &__title {
     padding: 0;

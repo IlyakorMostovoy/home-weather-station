@@ -1,8 +1,8 @@
 import React from "react";
 
-import Preloader from "../Preloader/Preloader";
+import Preloader from "../preloader";
 
-import "./DataBlock.scss";
+import "./styles.scss";
 
 const DataBlock = ({ type, value }) => {
   switch (type) {
