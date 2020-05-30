@@ -7,7 +7,7 @@ import "./styles.scss";
 
 const AppBar = ({ handleRefresh }) => (
   <header className="app-bar">
-    <h1 className="app-bar__title">Home weather station</h1>
+    <h1 className="app-bar__title">Home dashboard</h1>
     <RefreshButton handleClick={handleRefresh} />
   </header>
 );

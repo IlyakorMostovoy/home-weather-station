@@ -1,1 +1,3 @@
-# Home weather station
+# Home dashboard
+
+Devices and web application

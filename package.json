@@ -1,8 +1,8 @@
 {
-  "name": "home-weather-station",
+  "name": "home-dashboard",
   "version": "1.0.0",
   "author": "Ilya Malikov",
-  "homepage": "https://iammalikov.github.io/home-weather-station/",
+  "homepage": "https://iammalikov.github.io/home-dashboard/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
