@@ -4,27 +4,27 @@ import Main from "pages/main";
 
 const routes = [
   {
-    path: "/",
+    path: `${process.env.PUBLIC_URL}`,
     exact: true,
     page: () => <Main />,
   },
   {
-    path: "/bedroom",
+    path: `${process.env.PUBLIC_URL}/bedroom`,
     exact: true,
     page: () => <div>bedroom</div>,
   },
   {
-    path: "/livingRoom",
+    path: `${process.env.PUBLIC_URL}/livingRoom`,
     exact: true,
     page: () => <div>livingRoom</div>,
   },
   {
-    path: "/bathroom",
+    path: `${process.env.PUBLIC_URL}/bathroom`,
     exact: true,
     page: () => <div>bathroom</div>,
   },
   {
-    path: "/outdoors",
+    path: `${process.env.PUBLIC_URL}/outdoors`,
     exact: true,
     page: () => <div>outdoors</div>,
   },

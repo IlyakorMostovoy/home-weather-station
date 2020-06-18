@@ -16,7 +16,7 @@ const Menu: React.FC<MenuProps> = ({ isShow }) => {
       })}
     >
       <NavLink
-        to="/"
+        to={process.env.PUBLIC_URL}
         className="menu__item"
         activeClassName="menu__item_selected"
         exact
