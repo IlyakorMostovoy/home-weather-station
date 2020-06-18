@@ -1,6 +1,0 @@
-#include "Settings.h"
-
-const char* SSID = "xxxxx"; // Name of your WiFi network
-const char* PASSWORD = "xxxxx"; // Password of your WiFi network
-const String API_KEY = "xxxxx"; // "Write API Key" of your channel in ThingSpeak
-const unsigned int FREQUENCY_OF_SENDING_DATA = 300000; // In milliseconds

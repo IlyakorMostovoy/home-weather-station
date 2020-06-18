@@ -1,0 +1,87 @@
+@import "styles/_variables";
+@import "styles/_mixins";
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  min-height: calc(100% - 60px);
+  padding-top: 30px;
+  background-color: $bgComponent;
+  z-index: 100;
+
+  &_show {
+    display: block;
+  }
+
+  @include mq(1024px) {
+    display: block;
+    width: 200px;
+    padding-top: 39px;
+    border-radius: 0px 10px 0px 0px;
+  }
+
+  &__item {
+    position: relative;
+    display: block;
+    margin-bottom: 12px;
+    padding: 7px 0 7px 30px;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 300;
+    color: $text;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: lighten($text, 50%);
+    }
+
+    &_disabled {
+      color: lighten($text, 50%);
+      user-select: none;
+      cursor: default;
+    }
+
+    &_selected {
+      background-color: darken($bg, 2%);
+      cursor: default;
+
+      &:hover {
+        color: $text;
+      }
+    }
+
+    &_bedroom:before {
+      background-color: $bedroom;
+    }
+
+    &_livingRoom:before {
+      background-color: $livingRoom;
+    }
+
+    &_bathroom:before {
+      background-color: $bathroom;
+    }
+
+    &_outdoors:before {
+      background-color: $outdoors;
+    }
+
+    &:not(:first-child):before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      margin-left: -15px;
+      border-radius: 4px;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+    }
+
+    @include mq(1024px) {
+      margin-bottom: 22px;
+    }
+  }
+}

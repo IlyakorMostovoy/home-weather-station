@@ -1,0 +1,43 @@
+@import "styles/_variables";
+@import "styles/_mixins";
+
+.last-update {
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 300;
+  color: $textSecond;
+  cursor: pointer;
+
+  @include mq(768px) {
+    font-size: 16px;
+  }
+
+  &__text {
+    display: none;
+
+    @include mq(768px) {
+      display: block;
+    }
+  }
+
+  &__icon {
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    fill: $textSecond;
+
+    &_animate {
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

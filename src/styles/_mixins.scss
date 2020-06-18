@@ -1,0 +1,12 @@
+// Media queries (the mobile first approach)
+@mixin mq($size, $type: "min") {
+  @if $type == "min" {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $size) {
+      @content;
+    }
+  }
+}

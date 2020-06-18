@@ -1,0 +1,22 @@
+@import "styles/_mixins";
+
+.page {
+  width: 100%;
+  padding-top: 32px;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  @include mq(768px) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  @include mq(1024px) {
+    padding-left: 300px;
+  }
+
+  &__last-update {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

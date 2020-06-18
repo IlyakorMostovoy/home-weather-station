@@ -6,13 +6,13 @@
 #include <WiFiClient.h>
 
 #include <Adafruit_Sensor.h>
-#include <Adafruit_BME280.h>
+#include <Adafruit_AM2320.h>
 
 #include "settings.h"
 
 WiFiClient client;
 HTTPClient http;
-Adafruit_BME280 bme; // I2C
+Adafruit_AM2320 am2320 = Adafruit_AM2320(); // I2C
 
 void setup() {
   Serial.begin(9600);
@@ -33,38 +33,26 @@ void setup() {
   Serial.print("WiFi connected, IP address: ");
   Serial.println(WiFi.localIP());
 
-  // Connecting and availability check BME280 sensor
-  const boolean sensorStatus = bme.begin();
-
-  if (!sensorStatus) {
-    Serial.println("Could not find a valid BME280 sensor, check wiring, address, sensor ID!");
-
-    while (1) delay(1000);
-  }
-
-  Serial.println("");
-  Serial.println("BME280 connected");
-  Serial.println("");
+  // Connecting to AM2320 sensor
+  am2320.begin();
 }
 
 
 void loop() {
-  float temperature = bme.readTemperature(); // °C
-  float humidity = bme.readHumidity(); // %
-  float pressure = bme.readPressure() / 100.0F; // hPa
+  float temperature = am2320.readTemperature(); // °C
+  float humidity = am2320.readHumidity(); // %
 
-  sendDataToThingSpeak(temperature, humidity, pressure);
+  sendDataToThingSpeak(temperature, humidity);
 
   delay(FREQUENCY_OF_SENDING_DATA);
 }
 
-void sendDataToThingSpeak(float temperature, float humidity, float pressure) {
+void sendDataToThingSpeak(float temperature, float humidity) {
   String apiHost = "http://api.thingspeak.com/update";
   String apiKeyParameter = "?api_key=" + API_KEY;
   String temperatureParameter = "&field1=" + String(temperature);
   String humidityParameter = "&field2=" + String(humidity);
-  String pressureParameter = "&field3=" + String(pressure);
-  String url = apiHost + apiKeyParameter + temperatureParameter + humidityParameter + pressureParameter;
+  String url = apiHost + apiKeyParameter + temperatureParameter + humidityParameter;
 
   Serial.println("");
   Serial.print("Requesting URL: ");

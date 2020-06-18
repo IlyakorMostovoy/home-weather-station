@@ -1,0 +1,61 @@
+@import "styles/_variables";
+@import "styles/_mixins";
+
+.quantity-diff {
+  display: flex;
+  align-items: baseline;
+
+  &_bedroom {
+    color: $bedroom;
+  }
+
+  &_livingRoom {
+    color: $livingRoom;
+  }
+
+  &_bathroom {
+    color: $bathroom;
+  }
+
+  &_outdoors {
+    color: $outdoors;
+  }
+
+  &:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 6.93px 0 6.93px;
+    border-color: currentColor transparent transparent transparent;
+
+    @include mq(768px) {
+      border-width: 12px 5.775px 0 5.775px;
+    }
+  }
+
+  &_grow {
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 5.775px 10px 5.775px;
+      border-color: transparent transparent currentColor transparent;
+
+      @include mq(768px) {
+        border-width: 0 6.93px 12px 6.93px;
+      }
+    }
+  }
+
+  &__value {
+    margin-left: 3px;
+    font-size: 12px;
+    color: currentColor;
+
+    @include mq(768px) {
+      font-size: 14px;
+    }
+  }
+}
