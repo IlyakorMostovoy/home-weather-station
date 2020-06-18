@@ -6,11 +6,14 @@
 # testing
 /coverage
 
+# develop
+.vscode
+
 # production
 /build
 
 # devices
-Settings.cpp
+settings.cpp
 
 # misc
 .DS_Store

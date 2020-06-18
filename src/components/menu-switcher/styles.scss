@@ -1,0 +1,51 @@
+@import "styles/_variables";
+@import "styles/_mixins";
+
+.menu-switcher {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 21px;
+
+  @include mq(1024px) {
+    display: none;
+  }
+
+  &__first,
+  &__second,
+  &__third {
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: $text;
+    transition: 0.3s ease;
+  }
+
+  &__first {
+    top: 0;
+  }
+
+  &__second {
+    top: 9px;
+  }
+
+  &__third {
+    top: 18px;
+  }
+
+  &_active {
+    .menu-switcher__first {
+      transform: rotate(45deg);
+      top: 9px;
+    }
+
+    .menu-switcher__second {
+      opacity: 0;
+    }
+    .menu-switcher__third {
+      transform: rotate(-45deg);
+      top: 9px;
+    }
+  }
+}
