@@ -1,6 +1,7 @@
 import React from "react";
 
 import Main from "pages/main";
+import Bedroom from "pages/bedroom";
 
 const routes = [
   {
@@ -11,12 +12,12 @@ const routes = [
   {
     path: `${process.env.PUBLIC_URL}/bedroom`,
     exact: true,
-    page: () => <div>bedroom</div>,
+    page: () => <Bedroom />,
   },
   {
-    path: `${process.env.PUBLIC_URL}/livingRoom`,
+    path: `${process.env.PUBLIC_URL}/livingroom`,
     exact: true,
-    page: () => <div>livingRoom</div>,
+    page: () => <div>livingroom</div>,
   },
   {
     path: `${process.env.PUBLIC_URL}/bathroom`,

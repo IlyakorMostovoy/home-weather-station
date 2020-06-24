@@ -21,7 +21,9 @@ const MeasureIndicator: React.FC<MeasureIndicatorProps> = ({
   type,
   data,
 }) => {
-  if (data.length === 0) {
+  const dataLength = data.length;
+
+  if (dataLength === 0) {
     return (
       <div className="physical-quantity">
         <Preloader className="physical-quantity__preloader" />
@@ -29,8 +31,8 @@ const MeasureIndicator: React.FC<MeasureIndicatorProps> = ({
     );
   }
 
-  const prevValue = Math.round(data[0].value);
-  const value = Math.round(data[1].value);
+  const prevValue = Math.round(data[dataLength - 1].value);
+  const value = Math.round(data[dataLength - 2].value);
   const unitMeasure = getUnitMeasure(type);
 
   return (

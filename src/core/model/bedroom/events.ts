@@ -11,3 +11,11 @@ export const getBedroomLastDataFx: Effect<void, Bedroom, Error> = createEffect({
     return data;
   },
 });
+
+export const getBedroomFeedsFx: Effect<void, Bedroom, Error> = createEffect({
+  async handler() {
+    const data = await getBedroomFeeds(288);
+
+    return data;
+  },
+});

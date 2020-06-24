@@ -1,5 +1,6 @@
+import { normalizeBedroomData } from "utils/api";
+
 import type { BedroomResponse } from "./types";
-import { normalizeBedroomData } from "./utils";
 
 export const getBedroomFeeds = (results: number) =>
   fetch(

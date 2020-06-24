@@ -15,8 +15,8 @@ type QuantityDiffProps = {
 const QuantityDiff: React.FC<QuantityDiffProps> = ({
   className,
   room,
-  prevValue,
-  value,
+  prevValue = 0,
+  value = 0,
 }) => {
   const diff = value - prevValue;
   const isGrowing = diff >= 0;

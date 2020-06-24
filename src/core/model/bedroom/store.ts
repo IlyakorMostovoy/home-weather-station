@@ -1,17 +1,21 @@
 import { createStore } from "effector";
 
 import { Bedroom } from "./types";
-import { getBedroomLastDataFx } from "./events";
+import { getBedroomLastDataFx, getBedroomFeedsFx } from "./events";
 
-const defaultLastData: Bedroom = {
+const defaultFeeds: Bedroom = {
   temperature: [],
   humidity: [],
   pressure: [],
   lastUpdate: "",
 };
 
-export const $bedroomLastData = createStore<Bedroom>(defaultLastData);
+export const $bedroomFeeds = createStore<Bedroom>(defaultFeeds);
 
-$bedroomLastData.on(getBedroomLastDataFx.done, (_state, { result }) => ({
-  ...result,
-}));
+$bedroomFeeds
+  .on(getBedroomLastDataFx.done, (_state, { result }) => ({
+    ...result,
+  }))
+  .on(getBedroomFeedsFx.done, (_state, { result }) => ({
+    ...result,
+  }));
