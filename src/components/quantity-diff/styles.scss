@@ -5,12 +5,12 @@
   display: flex;
   align-items: baseline;
 
-  &_bedroom {
-    color: $bedroom;
-  }
-
   &_livingroom {
     color: $livingroom;
+  }
+
+  &_kitchen {
+    color: $kitchen;
   }
 
   &_bathroom {

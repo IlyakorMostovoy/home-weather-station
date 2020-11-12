@@ -25,6 +25,11 @@ const LivingroomPanel: React.FC = () => {
           type="humidity"
           data={Feeds.humidity}
         />
+        <MeasureIndicator
+          room="livingroom"
+          type="pressure"
+          data={Feeds.pressure}
+        />
       </Panel>
     </Section>
   );

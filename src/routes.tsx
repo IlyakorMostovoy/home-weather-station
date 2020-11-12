@@ -1,7 +1,7 @@
 import React from "react";
 
 import Main from "pages/main";
-import Bedroom from "pages/bedroom";
+// import Livingroom from "pages/livingroom";
 
 const routes = [
   {
@@ -9,26 +9,26 @@ const routes = [
     exact: true,
     page: () => <Main />,
   },
-  {
-    path: `${process.env.PUBLIC_URL}/bedroom`,
-    exact: true,
-    page: () => <Bedroom />,
-  },
-  {
-    path: `${process.env.PUBLIC_URL}/livingroom`,
-    exact: true,
-    page: () => <div>livingroom</div>,
-  },
-  {
-    path: `${process.env.PUBLIC_URL}/bathroom`,
-    exact: true,
-    page: () => <div>bathroom</div>,
-  },
-  {
-    path: `${process.env.PUBLIC_URL}/outdoors`,
-    exact: true,
-    page: () => <div>outdoors</div>,
-  },
+  // {
+  //   path: `${process.env.PUBLIC_URL}/livingroom`,
+  //   exact: true,
+  //   page: () => <Livingroom />,
+  // },
+  // {
+  //   path: `${process.env.PUBLIC_URL}/kitchen`,
+  //   exact: true,
+  //   page: () => <div>kitchen</div>,
+  // },
+  // {
+  //   path: `${process.env.PUBLIC_URL}/bathroom`,
+  //   exact: true,
+  //   page: () => <div>bathroom</div>,
+  // },
+  // {
+  //   path: `${process.env.PUBLIC_URL}/outdoors`,
+  //   exact: true,
+  //   page: () => <div>outdoors</div>,
+  // },
 ];
 
 export default routes;

@@ -1,8 +1,7 @@
 import { Indicator } from "common/types";
 
-export type Bedroom = {
+export type Kitchen = {
   temperature: Array<Indicator>;
   humidity: Array<Indicator>;
-  pressure: Array<Indicator>;
   lastUpdate: string;
 };

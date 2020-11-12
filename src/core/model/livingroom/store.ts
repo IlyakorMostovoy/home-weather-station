@@ -6,6 +6,7 @@ import { getLivingroomLastDataFx, getLivingroomFeedsFx } from "./events";
 const defaultFeeds: Livingroom = {
   temperature: [],
   humidity: [],
+  pressure: [],
   lastUpdate: "",
 };
 

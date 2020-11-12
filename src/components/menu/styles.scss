@@ -53,12 +53,12 @@
       }
     }
 
-    &_bedroom:before {
-      background-color: $bedroom;
-    }
-
     &_livingroom:before {
       background-color: $livingroom;
+    }
+
+    &_kitchen:before {
+      background-color: $kitchen;
     }
 
     &_bathroom:before {

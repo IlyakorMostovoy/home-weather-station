@@ -1,4 +1,4 @@
-export type BedroomFeedResponse = {
+export type LivingroomFeedResponse = {
   created_at: string;
   entry_id: number;
   field1: string;
@@ -6,7 +6,7 @@ export type BedroomFeedResponse = {
   field3: string;
 };
 
-export type BedroomResponse = {
+export type LivingroomResponse = {
   channel: {
     id: number;
     name: string;
@@ -19,17 +19,17 @@ export type BedroomResponse = {
     updated_at: string;
     last_entry_id: number;
   };
-  feeds: Array<BedroomFeedResponse>;
+  feeds: Array<LivingroomFeedResponse>;
 };
 
-export type LivingroomFeedResponse = {
+export type KitchenFeedResponse = {
   created_at: string;
   entry_id: number;
   field1: string;
   field2: string;
 };
 
-export type LivingroomResponse = {
+export type KitchenResponse = {
   channel: {
     id: number;
     name: string;
@@ -41,5 +41,5 @@ export type LivingroomResponse = {
     updated_at: string;
     last_entry_id: number;
   };
-  feeds: Array<LivingroomFeedResponse>;
+  feeds: Array<KitchenFeedResponse>;
 };

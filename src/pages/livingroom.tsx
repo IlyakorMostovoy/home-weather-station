@@ -1,20 +1,20 @@
 import React, { useCallback, useEffect } from "react";
 import { useStore } from "effector-react";
 
-import { getBedroomFeedsFx } from "core/model/bedroom/events";
-import { $bedroomFeeds } from "core/model/bedroom/store";
+import { getLivingroomFeedsFx } from "core/model/livingroom/events";
+import { $livingroomFeeds } from "core/model/livingroom/store";
 
-import BedroomPanel from "modules/bedroomPanel";
+import LivingroomPanel from "modules/livingroomPanel";
 
 import LastUpdate from "components/last-update";
 
 import "styles/page.scss";
 
-const Bedroom: React.FC = () => {
-  const { lastUpdate } = useStore($bedroomFeeds);
-  const isLoading = useStore(getBedroomFeedsFx.pending);
+const Livingroom: React.FC = () => {
+  const { lastUpdate } = useStore($livingroomFeeds);
+  const isLoading = useStore(getLivingroomFeedsFx.pending);
   const fetchFeeds = useCallback(() => {
-    getBedroomFeedsFx();
+    getLivingroomFeedsFx();
   }, []);
 
   useEffect(() => {
@@ -30,9 +30,9 @@ const Bedroom: React.FC = () => {
           clickHandler={fetchFeeds}
         />
       </div>
-      <BedroomPanel />
+      <LivingroomPanel />
     </div>
   );
 };
 
-export default Bedroom;
+export default Livingroom;

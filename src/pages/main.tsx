@@ -3,31 +3,31 @@ import { useStore } from "effector-react";
 
 import { getLatestTimestamp } from "utils/date";
 
-import { getBedroomLastDataFx } from "core/model/bedroom/events";
-import { $bedroomFeeds } from "core/model/bedroom/store";
 import { getLivingroomLastDataFx } from "core/model/livingroom/events";
 import { $livingroomFeeds } from "core/model/livingroom/store";
+import { getKitchenLastDataFx } from "core/model/kitchen/events";
+import { $kitchenFeeds } from "core/model/kitchen/store";
 
-import BedroomPanel from "modules/bedroomPanel";
 import LivingroomPanel from "modules/livingroomPanel";
+import KitchenPanel from "modules/kitchenPanel";
 
 import LastUpdate from "components/last-update";
 
 import "styles/page.scss";
 
 const Main: React.FC = () => {
-  const bedroomFeeds = useStore($bedroomFeeds);
   const livingroomFeeds = useStore($livingroomFeeds);
-  const isLoadingBedroom = useStore(getBedroomLastDataFx.pending);
+  const kitchenFeeds = useStore($kitchenFeeds);
   const isLoadingLivingroom = useStore(getLivingroomLastDataFx.pending);
+  const isLoadingKitchen = useStore(getKitchenLastDataFx.pending);
   const LastUpdateTimestamp = getLatestTimestamp(
-    bedroomFeeds.lastUpdate,
-    livingroomFeeds.lastUpdate
+    livingroomFeeds.lastUpdate,
+    kitchenFeeds.lastUpdate
   );
-  const isLoading = isLoadingBedroom || isLoadingLivingroom;
+  const isLoading = isLoadingLivingroom || isLoadingKitchen;
   const fetchLastData = useCallback(() => {
-    getBedroomLastDataFx();
     getLivingroomLastDataFx();
+    getKitchenLastDataFx();
   }, []);
 
   useEffect(() => {
@@ -43,8 +43,8 @@ const Main: React.FC = () => {
           clickHandler={fetchLastData}
         />
       </div>
-      <BedroomPanel />
       <LivingroomPanel />
+      <KitchenPanel />
     </div>
   );
 };
