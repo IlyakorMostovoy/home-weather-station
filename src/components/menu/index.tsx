@@ -23,10 +23,14 @@ const Menu: React.FC<MenuProps> = ({ isShow }) => {
       >
         Main
       </NavLink>
-      <div className="menu__item menu__item_disabled menu__item_bedroom">
+      <NavLink
+        to={`${process.env.PUBLIC_URL}/bedroom`}
+        className="menu__item menu__item_bedroom"
+        activeClassName="menu__item_selected"
+      >
         Bedroom
-      </div>
-      <div className="menu__item menu__item_disabled menu__item_livingRoom">
+      </NavLink>
+      <div className="menu__item menu__item_disabled menu__item_livingroom">
         Livingroom
       </div>
       <div className="menu__item menu__item_disabled menu__item_bathroom">

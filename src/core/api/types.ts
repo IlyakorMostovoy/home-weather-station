@@ -22,14 +22,14 @@ export type BedroomResponse = {
   feeds: Array<BedroomFeedResponse>;
 };
 
-export type LivingRoomFeedResponse = {
+export type LivingroomFeedResponse = {
   created_at: string;
   entry_id: number;
   field1: string;
   field2: string;
 };
 
-export type LivingRoomResponse = {
+export type LivingroomResponse = {
   channel: {
     id: number;
     name: string;
@@ -41,5 +41,5 @@ export type LivingRoomResponse = {
     updated_at: string;
     last_entry_id: number;
   };
-  feeds: Array<LivingRoomFeedResponse>;
+  feeds: Array<LivingroomFeedResponse>;
 };

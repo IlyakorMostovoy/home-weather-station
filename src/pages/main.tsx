@@ -1,47 +1,50 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useStore } from "effector-react";
 
-import { getLastDate } from "utils/date";
+import { getLatestTimestamp } from "utils/date";
 
 import { getBedroomLastDataFx } from "core/model/bedroom/events";
-import { $bedroomLastData } from "core/model/bedroom/store";
-import { getLivingRoomFeedsFx } from "core/model/livingRoom/events";
-import { $livingRoomLastData } from "core/model/livingRoom/store";
+import { $bedroomFeeds } from "core/model/bedroom/store";
+import { getLivingroomLastDataFx } from "core/model/livingroom/events";
+import { $livingroomFeeds } from "core/model/livingroom/store";
 
 import BedroomPanel from "modules/bedroomPanel";
-import LivingRoomPanel from "modules/livingRoomPanel";
+import LivingroomPanel from "modules/livingroomPanel";
 
 import LastUpdate from "components/last-update";
 
 import "styles/page.scss";
 
 const Main: React.FC = () => {
-  const bedroomLastData = useStore($bedroomLastData);
-  const livingRoomLastData = useStore($livingRoomLastData);
+  const bedroomFeeds = useStore($bedroomFeeds);
+  const livingroomFeeds = useStore($livingroomFeeds);
   const isLoadingBedroom = useStore(getBedroomLastDataFx.pending);
-  const isLoadingLivingRoom = useStore(getLivingRoomFeedsFx.pending);
-  const LastUpdateTime = getLastDate(
-    bedroomLastData.lastUpdate,
-    livingRoomLastData.lastUpdate
+  const isLoadingLivingroom = useStore(getLivingroomLastDataFx.pending);
+  const LastUpdateTimestamp = getLatestTimestamp(
+    bedroomFeeds.lastUpdate,
+    livingroomFeeds.lastUpdate
   );
-  const isLoading = isLoadingBedroom || isLoadingLivingRoom;
-
-  const updateData = useCallback(() => {
+  const isLoading = isLoadingBedroom || isLoadingLivingroom;
+  const fetchLastData = useCallback(() => {
     getBedroomLastDataFx();
-    getLivingRoomFeedsFx();
+    getLivingroomLastDataFx();
   }, []);
+
+  useEffect(() => {
+    fetchLastData();
+  }, [fetchLastData]);
 
   return (
     <div className="page">
       <div className="page__last-update">
         <LastUpdate
-          timestamp={LastUpdateTime}
+          timestamp={LastUpdateTimestamp}
           isLoading={isLoading}
-          clickHandler={updateData}
+          clickHandler={fetchLastData}
         />
       </div>
       <BedroomPanel />
-      <LivingRoomPanel />
+      <LivingroomPanel />
     </div>
   );
 };

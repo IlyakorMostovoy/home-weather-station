@@ -12,16 +12,18 @@ export const getLastUpdateText = (timestamp: string): string => {
   return `${day} ${month} ${year}, ${addZero(hours)}:${addZero(minutes)}`;
 };
 
-export const getLastDate = (
-  bedroomDate: string,
-  livingRoomDate: string
-): string => {
-  const bedroomTimestamp = new Date(bedroomDate);
-  const livingRoomTimestamp = new Date(livingRoomDate);
+export const getLatestTimestamp = (...timestamps: Array<string>): string => {
+  if (timestamps.length === 0) return new Date().toString();
 
-  if (bedroomTimestamp > livingRoomTimestamp) {
-    return bedroomTimestamp.toString();
-  }
+  let latestDate: Date = new Date(timestamps[0]);
 
-  return livingRoomTimestamp.toString();
+  timestamps.forEach((timestamp) => {
+    const currentDate = new Date(timestamp);
+
+    if (currentDate > latestDate) {
+      latestDate = currentDate;
+    }
+  });
+
+  return latestDate.toString();
 };
