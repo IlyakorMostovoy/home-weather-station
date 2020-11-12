@@ -30,12 +30,12 @@
     line-height: 1;
     font-weight: 600;
 
-    &_bedroom {
-      color: $bedroom;
-    }
-
     &_livingroom {
       color: $livingroom;
+    }
+
+    &_kitchen {
+      color: $kitchen;
     }
 
     &_bathroom {

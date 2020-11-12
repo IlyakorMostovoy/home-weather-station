@@ -1,4 +1,4 @@
-export type Rooms = "bedroom" | "livingroom" | "bathroom" | "outdoors";
+export type Rooms = "livingroom" | "kitchen" | "bathroom" | "outdoors";
 
 export type PhysicalQuantity = "temperature" | "humidity" | "pressure";
 

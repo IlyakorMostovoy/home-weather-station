@@ -1,38 +1,33 @@
 import React from "react";
 import { useStore } from "effector-react";
 
-import { $bedroomFeeds } from "core/model/bedroom/store";
+import { $kitchenFeeds } from "core/model/kitchen/store";
 
 import Section from "components/section";
 import Title from "components/title";
 import Panel from "components/panel";
 import MeasureIndicator from "components/measure-indicator";
 
-const BedroomPanel: React.FC = () => {
-  const Feeds = useStore($bedroomFeeds);
+const KitchenPanel: React.FC = () => {
+  const Feeds = useStore($kitchenFeeds);
 
   return (
     <Section>
-      <Title text="Bedroom" />
+      <Title text="Kitchen" />
       <Panel>
         <MeasureIndicator
-          room="bedroom"
+          room="kitchen"
           type="temperature"
           data={Feeds.temperature}
         />
         <MeasureIndicator
-          room="bedroom"
+          room="kitchen"
           type="humidity"
           data={Feeds.humidity}
-        />
-        <MeasureIndicator
-          room="bedroom"
-          type="pressure"
-          data={Feeds.pressure}
         />
       </Panel>
     </Section>
   );
 };
 
-export default BedroomPanel;
+export default KitchenPanel;
