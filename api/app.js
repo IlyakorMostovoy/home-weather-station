@@ -25,8 +25,12 @@ app.use(cors(corsOptions));
 /**
  * Parse request
  */
-app.use(bodyParser.json()); // Content-Type: application/json
-app.use(bodyParser.urlencoded({ extended: true })); // Content-Type: application/x-www-form-urlencoded
+
+// Content-Type: application/json
+app.use(bodyParser.json());
+
+// Content-Type: application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /**
  * Database
