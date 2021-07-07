@@ -19,7 +19,8 @@
   },
   "scripts": {
     "start": "nodemon app.js",
-    "start:api": "node app.js"
+    "start:api": "node app.js",
+    "docs": "node api-docs.js"
   },
   "bugs": {
     "url": "https://github.com/iammalikov/home-dashboard/issues"
@@ -33,14 +34,16 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "swagger-ui-express": "^4.1.6"
   },
   "engines": {
     "node": ">=14.17.0"

@@ -1,39 +1,41 @@
-# API для Home Dashboard
+# API for Home Dashboard
 
-## Начальная настройка, чтобы запустить API локально
+## Initial setup to run API
 
-1. Создаём файл окружения `.env` на основе `.env.sample`
+1. Install [PostgreSQL](https://www.postgresql.org/download/)
 
-2. Устанавливаем `node_modules`
+2. Create an environment file `.env` based on `.env.sample`
+
+3. Install `node_modules`
 
    ```bash
    npm i
    ```
 
-3. Устанавливаем утилиту `sequelize-cli` для работы с БД
+4. Install `sequelize-cli` to work with database
 
    ```bash
    npm install sequelize-cli -g
    ```
 
-4. Создаём БД
+5. Create database
    ```bash
    sequelize db:create
    ```
-5. Создаём структуру БД (миграции)
+6. Create database structure (migrations)
    ```bash
    sequelize db:migrate
    ```
-6. Добавляем данные в БД
+7. Add data to database (seeds)
 
    ```bash
    sequelize db:seed:all
    ```
 
-7. Запускаем сервер API
-
-   API будет доступно на порту указанном в переменной окружения `PORT` файла `.env`
+8. Start API server
 
    ```bash
    npm start
    ```
+
+   API will be available on port specified in the `PORT` environment variable of `.env` file
