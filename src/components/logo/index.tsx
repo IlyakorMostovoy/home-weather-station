@@ -1,10 +1,10 @@
-import React from "react";
-
-import "./styles.scss";
+import './styles.scss';
 
 const Logo = () => (
   <div className="logo">
-    <span className="logo__home">Home</span> Dashboard
+    <span className="logo__home">Home</span>
+    {' '}
+    Dashboard
   </div>
 );
 

@@ -1,12 +1,11 @@
-import React from "react";
-import { useStore } from "effector-react";
+import { useStore } from 'effector-react';
 
-import { $livingroomFeeds } from "core/model/livingroom/store";
+import { $livingroomFeeds } from 'core/model/livingroom/store';
 
-import Section from "components/section";
-import Title from "components/title";
-import Panel from "components/panel";
-import MeasureIndicator from "components/measure-indicator";
+import Section from 'components/section';
+import Title from 'components/title';
+import Panel from 'components/panel';
+import MeasureIndicator from 'components/measure-indicator';
 
 const LivingroomPanel: React.FC = () => {
   const Feeds = useStore($livingroomFeeds);

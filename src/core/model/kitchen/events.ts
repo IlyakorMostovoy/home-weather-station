@@ -1,8 +1,8 @@
-import { Effect, createEffect } from "effector";
+import { Effect, createEffect } from 'effector';
 
-import { getKitchenFeeds } from "core/api/kitchen";
+import { getKitchenFeeds } from 'core/api/kitchen';
 
-import { Kitchen } from "./types";
+import { Kitchen } from './types';
 
 export const getKitchenLastDataFx: Effect<void, Kitchen, Error> = createEffect({
   async handler() {

@@ -1,4 +1,4 @@
-import { Indicator } from "common/types";
+import { Indicator } from 'common/types';
 
 export type Livingroom = {
   temperature: Array<Indicator>;

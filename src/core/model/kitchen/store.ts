@@ -1,12 +1,12 @@
-import { createStore } from "effector";
+import { createStore } from 'effector';
 
-import { Kitchen } from "./types";
-import { getKitchenLastDataFx, getKitchenFeedsFx } from "./events";
+import { Kitchen } from './types';
+import { getKitchenLastDataFx, getKitchenFeedsFx } from './events';
 
 const defaultFeeds: Kitchen = {
   temperature: [],
   humidity: [],
-  lastUpdate: "",
+  lastUpdate: '',
 };
 
 export const $kitchenFeeds = createStore<Kitchen>(defaultFeeds);

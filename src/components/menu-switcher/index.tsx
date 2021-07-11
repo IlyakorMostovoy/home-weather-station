@@ -1,7 +1,6 @@
-import React from "react";
-import cx from "classnames";
+import cx from 'classnames';
 
-import "./styles.scss";
+import './styles.scss';
 
 type MenuSwitcherProps = {
   active: boolean;
@@ -11,19 +10,17 @@ type MenuSwitcherProps = {
 const MenuSwitcher: React.FC<MenuSwitcherProps> = ({
   active,
   clickHandler,
-}) => {
-  return (
-    <div
-      className={cx("menu-switcher", {
-        "menu-switcher_active": active,
-      })}
-      onClick={clickHandler}
-    >
-      <div className="menu-switcher__first"></div>
-      <div className="menu-switcher__second"></div>
-      <div className="menu-switcher__third"></div>
-    </div>
-  );
-};
+}) => (
+  <div
+    className={cx('menu-switcher', {
+      'menu-switcher_active': active,
+    })}
+    onClick={clickHandler}
+  >
+    <div className="menu-switcher__first" />
+    <div className="menu-switcher__second" />
+    <div className="menu-switcher__third" />
+  </div>
+);
 
 export default MenuSwitcher;

@@ -1,14 +1,13 @@
-import React from "react";
-import cx from "classnames";
+import cx from 'classnames';
 
-import "./styles.scss";
+import './styles.scss';
 
 type PreloaderProps = {
   className?: string;
 };
 
 const Preloader: React.FC<PreloaderProps> = ({ className }) => (
-  <div className={cx("preloader", className)}>
+  <div className={cx('preloader', className)}>
     <div className="preloader__circle preloader__circle_1" />
     <div className="preloader__circle preloader__circle_2" />
     <div className="preloader__circle preloader__circle_3" />

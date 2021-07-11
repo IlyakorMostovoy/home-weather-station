@@ -1,10 +1,10 @@
-import { Livingroom } from "core/model/livingroom/types";
-import { Kitchen } from "core/model/kitchen/types";
+import { Livingroom } from 'core/model/livingroom/types';
+import { Kitchen } from 'core/model/kitchen/types';
 
-import { LivingroomFeedResponse, KitchenFeedResponse } from "../core/api/types";
+import { LivingroomFeedResponse, KitchenFeedResponse } from 'core/api/types';
 
 export const normalizeLivingroomData = (
-  feeds: Array<LivingroomFeedResponse>
+  feeds: Array<LivingroomFeedResponse>,
 ): Livingroom => ({
   temperature: feeds.map((feed: LivingroomFeedResponse) => ({
     date: feed.created_at,
@@ -22,7 +22,7 @@ export const normalizeLivingroomData = (
 });
 
 export const normalizeKitchenData = (
-  feeds: Array<KitchenFeedResponse>
+  feeds: Array<KitchenFeedResponse>,
 ): Kitchen => ({
   temperature: feeds.map((feed: KitchenFeedResponse) => ({
     date: feed.created_at,
