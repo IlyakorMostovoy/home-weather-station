@@ -1,11 +1,11 @@
-import './styles.scss';
+import * as Styled from './styled';
 
 type SectionProps = {
   children: React.ReactNode;
 };
 
 const Section: React.FC<SectionProps> = ({ children }) => (
-  <section className="section">{children}</section>
+  <Styled.Section>{children}</Styled.Section>
 );
 
 export default Section;

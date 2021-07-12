@@ -29,7 +29,13 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "plugins": [{
+      "name": "typescript-styled-plugin",
+      "tags": [
+        "styled",
+      ]
+    }]
   },
   "include": [
     "src/**/*.ts",

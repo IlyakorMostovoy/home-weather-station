@@ -1,11 +1,10 @@
-import './styles.scss';
+import * as Styled from './styled';
 
 const Logo = () => (
-  <div className="logo">
-    <span className="logo__home">Home</span>
-    {' '}
+  <Styled.Logo>
+    <Styled.Span>Home</Styled.Span>
     Dashboard
-  </div>
+  </Styled.Logo>
 );
 
 export default Logo;

@@ -1,11 +1,11 @@
-import './styles.scss';
+import * as Styled from './styled';
 
 type ContainerProps = {
   children: React.ReactNode;
 };
 
 const Container = ({ children }: ContainerProps) => (
-  <div className="container">{children}</div>
+  <Styled.Container>{children}</Styled.Container>
 );
 
 export default Container;
