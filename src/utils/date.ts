@@ -1,10 +1,10 @@
-import { Months } from "common/enums";
-import { addZero } from "utils/string";
+import { Months } from 'common/types';
+import { addZero } from 'utils/string';
 
 export const getLastUpdateText = (timestamp: string): string => {
   const date: Date = new Date(timestamp);
   const day: number = date.getDate();
-  const month: string = Months[date.getMonth()];
+  const month = Months[date.getMonth()];
   const year: number = date.getFullYear();
   const hours: number = date.getHours();
   const minutes: number = date.getMinutes();

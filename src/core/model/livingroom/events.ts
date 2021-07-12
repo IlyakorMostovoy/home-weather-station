@@ -1,8 +1,8 @@
-import { Effect, createEffect } from "effector";
+import { Effect, createEffect } from 'effector';
 
-import { getLivingroomFeeds } from "core/api/livingroom";
+import { getLivingroomFeeds } from 'core/api/livingroom';
 
-import { Livingroom } from "./types";
+import { Livingroom } from './types';
 
 export const getLivingroomLastDataFx: Effect<
   void,

@@ -1,19 +1,19 @@
-import React, { useCallback, useEffect } from "react";
-import { useStore } from "effector-react";
+import React, { useCallback, useEffect } from 'react';
+import { useStore } from 'effector-react';
 
-import { getLatestTimestamp } from "utils/date";
+import { getLatestTimestamp } from 'utils/date';
 
-import { getLivingroomLastDataFx } from "core/model/livingroom/events";
-import { $livingroomFeeds } from "core/model/livingroom/store";
-import { getKitchenLastDataFx } from "core/model/kitchen/events";
-import { $kitchenFeeds } from "core/model/kitchen/store";
+import { getLivingroomLastDataFx } from 'core/model/livingroom/events';
+import { $livingroomFeeds } from 'core/model/livingroom/store';
+import { getKitchenLastDataFx } from 'core/model/kitchen/events';
+import { $kitchenFeeds } from 'core/model/kitchen/store';
 
-import LivingroomPanel from "modules/livingroomPanel";
-import KitchenPanel from "modules/kitchenPanel";
+import LivingroomPanel from 'modules/livingroomPanel';
+import KitchenPanel from 'modules/kitchenPanel';
 
-import LastUpdate from "components/last-update";
+import LastUpdate from 'components/last-update';
 
-import "styles/page.scss";
+import 'styles/page.scss';
 
 const Main: React.FC = () => {
   const livingroomFeeds = useStore($livingroomFeeds);
@@ -22,7 +22,7 @@ const Main: React.FC = () => {
   const isLoadingKitchen = useStore(getKitchenLastDataFx.pending);
   const LastUpdateTimestamp = getLatestTimestamp(
     livingroomFeeds.lastUpdate,
-    kitchenFeeds.lastUpdate
+    kitchenFeeds.lastUpdate,
   );
   const isLoading = isLoadingLivingroom || isLoadingKitchen;
   const fetchLastData = useCallback(() => {

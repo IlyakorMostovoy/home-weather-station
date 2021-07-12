@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect } from "react";
-import { useStore } from "effector-react";
+import React, { useCallback, useEffect } from 'react';
+import { useStore } from 'effector-react';
 
-import { getLivingroomFeedsFx } from "core/model/livingroom/events";
-import { $livingroomFeeds } from "core/model/livingroom/store";
+import { getLivingroomFeedsFx } from 'core/model/livingroom/events';
+import { $livingroomFeeds } from 'core/model/livingroom/store';
 
-import LivingroomPanel from "modules/livingroomPanel";
+import LivingroomPanel from 'modules/livingroomPanel';
 
-import LastUpdate from "components/last-update";
+import LastUpdate from 'components/last-update';
 
-import "styles/page.scss";
+import 'styles/page.scss';
 
 const Livingroom: React.FC = () => {
   const { lastUpdate } = useStore($livingroomFeeds);

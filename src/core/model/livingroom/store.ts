@@ -1,13 +1,13 @@
-import { createStore } from "effector";
+import { createStore } from 'effector';
 
-import { Livingroom } from "./types";
-import { getLivingroomLastDataFx, getLivingroomFeedsFx } from "./events";
+import { Livingroom } from './types';
+import { getLivingroomLastDataFx, getLivingroomFeedsFx } from './events';
 
 const defaultFeeds: Livingroom = {
   temperature: [],
   humidity: [],
   pressure: [],
-  lastUpdate: "",
+  lastUpdate: '',
 };
 
 export const $livingroomFeeds = createStore<Livingroom>(defaultFeeds);

@@ -1,9 +1,8 @@
-import React from "react";
-import cx from "classnames";
+import cx from 'classnames';
 
-import { Rooms } from "common/types";
+import { Rooms } from 'common/types';
 
-import "./styles.scss";
+import './styles.scss';
 
 type QuantityDiffProps = {
   className: string;
@@ -24,14 +23,14 @@ const QuantityDiff: React.FC<QuantityDiffProps> = ({
   return (
     <div
       className={cx(
-        "quantity-diff",
+        'quantity-diff',
         `quantity-diff_${room}`,
         {
-          "quantity-diff_grow": isGrowing,
+          'quantity-diff_grow': isGrowing,
         },
-        className
+        className,
       )}
-    ></div>
+    />
   );
 };
 

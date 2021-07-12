@@ -1,6 +1,4 @@
-import React from "react";
-
-import Main from "pages/main";
+import Main from 'pages/main';
 // import Livingroom from "pages/livingroom";
 
 const routes = [

@@ -1,12 +1,12 @@
-import React, { useCallback } from "react";
-import cx from "classnames";
-import debounce from "lodash.debounce";
+import React, { useCallback } from 'react';
+import cx from 'classnames';
+import debounce from 'lodash.debounce';
 
-import { getLastUpdateText } from "utils/date";
+import { getLastUpdateText } from 'utils/date';
 
-import { ReactComponent as Icon } from "./icon.svg";
+import { ReactComponent as Icon } from './icon.svg';
 
-import "./styles.scss";
+import './styles.scss';
 
 type LastUpdateProps = {
   timestamp: string;
@@ -25,13 +25,13 @@ const LastUpdate: React.FC<LastUpdateProps> = ({
     useCallback(() => {
       clickHandler();
     }, [clickHandler]),
-    300
+    300,
   );
 
   return (
     <div className="last-update" onClick={onClick}>
       {isLoading ? (
-        "loading..."
+        'loading...'
       ) : (
         <>
           <span className="last-update__text">last update:&nbsp;</span>
@@ -39,8 +39,8 @@ const LastUpdate: React.FC<LastUpdateProps> = ({
         </>
       )}
       <Icon
-        className={cx("last-update__icon", {
-          "last-update__icon_animate": isLoading,
+        className={cx('last-update__icon', {
+          'last-update__icon_animate': isLoading,
         })}
       />
     </div>

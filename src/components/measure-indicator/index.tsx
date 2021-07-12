@@ -1,14 +1,13 @@
-import React from "react";
-import cx from "classnames";
+import cx from 'classnames';
 
-import { Indicator } from "common/types";
-import { Rooms, PhysicalQuantity } from "common/types";
-import { getUnitMeasure } from "utils/string";
+import { Indicator, Rooms, PhysicalQuantity } from 'common/types';
 
-import Preloader from "components/preloader";
-import QuantityDiff from "components/quantity-diff";
+import { getUnitMeasure } from 'utils/string';
 
-import "./styles.scss";
+import Preloader from 'components/preloader';
+import QuantityDiff from 'components/quantity-diff';
+
+import './styles.scss';
 
 type MeasureIndicatorProps = {
   room: Rooms;
@@ -45,14 +44,16 @@ const MeasureIndicator: React.FC<MeasureIndicatorProps> = ({
       />
       <div
         className={cx(
-          "physical-quantity__value",
-          `physical-quantity__value_${room}`
+          'physical-quantity__value',
+          `physical-quantity__value_${room}`,
         )}
       >
         {value}
       </div>
       <div className="physical-quantity__caption">
-        {type}, {unitMeasure}
+        {type}
+        ,
+        {unitMeasure}
       </div>
     </div>
   );

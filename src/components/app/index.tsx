@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Logo from "components/logo";
-import MenuSwitcher from "components/menu-switcher";
-import Menu from "components/menu";
+import Logo from 'components/logo';
+import MenuSwitcher from 'components/menu-switcher';
+import Menu from 'components/menu';
 
-import routes from "routes";
+import routes from 'routes';
 
-import "./styles.scss";
+import './styles.scss';
 
 const App = () => {
   const [isOpen, toggle] = useState<boolean>(false);
@@ -27,11 +27,12 @@ const App = () => {
         <Switch>
           {routes.map((route, index) => (
             <Route
-              key={index}
+              key={`${index}-route`}
               path={route.path}
               exact={route.exact}
-              children={<route.page />}
-            />
+            >
+              <route.page />
+            </Route>
           ))}
         </Switch>
       </Router>
