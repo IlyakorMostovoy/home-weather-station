@@ -1,20 +1,10 @@
-import styled from 'styled-components';
-
-const StyledLogo = styled.div`
-  display: flex;
-  font-size: 25px;
-  line-height: 1;
-`;
-
-const StyledSpan = styled.div`
-  font-weight: 600;
-`;
+import * as Styled from './styled';
 
 const Logo = () => (
-  <StyledLogo>
-    <StyledSpan>Home</StyledSpan>
+  <Styled.Logo>
+    <Styled.Span>Home</Styled.Span>
     Dashboard
-  </StyledLogo>
+  </Styled.Logo>
 );
 
 export default Logo;
